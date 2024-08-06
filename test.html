@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select and Button Color Change</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <select id="colorSelect">
+            <option value="">Select a value</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+    <div>
+        <button id="button1" class="gray">Button 1</button>
+        <button id="button2" class="gray">Button 2</button>
+        <button id="button3" class="gray">Button 3</button>
+    </div>
+
+    <script>
+        const selectElement = document.getElementById('colorSelect');
+        const buttons = [
+            document.getElementById('button1'),
+            document.getElementById('button2'),
+            document.getElementById('button3')
+        ];
+
+        selectElement.addEventListener('change', function() {
+            const selectedValue = this.value;
+
+            buttons.forEach((button, index) => {
+                if (index + 1 == selectedValue) {
+                    button.classList.remove('gray');
+                    button.classList.add('green');
+                } else {
+                    button.classList.remove('green');
+                    button.classList.add('gray');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
